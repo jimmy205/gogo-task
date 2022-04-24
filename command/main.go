@@ -1,8 +1,18 @@
 package main
 
-import "gogolook/router"
+import (
+	"gogolook/router"
+	"log"
+	"os"
+)
 
 func main() {
-	r := router.SetupRouter()
-	r.Run(":8000")
+	server := router.SetupRouter()
+
+	port := ":8000"
+	if os.Getenv("PORT") != "" {
+		port = ":" + os.Getenv("PORT")
+	}
+	log.Println("port = ", port)
+	server.Run(port)
 }
