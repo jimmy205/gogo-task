@@ -7,20 +7,20 @@ import (
 )
 
 type errorResponse struct {
-	Code    string `json:"Code"`
-	Message string `json:"message"`
+	ErrorCode string `json:"error_code"`
+	Message   string `json:"message"`
 }
 
 func FailWithParams(ctx *gin.Context) {
 	ctx.JSON(http.StatusUnprocessableEntity, errorResponse{
-		Code:    "01",
-		Message: "please checking params are all correct.",
+		ErrorCode: "0001",
+		Message:   "please checking params are all correct.",
 	})
 }
 
 func FailWithError(ctx *gin.Context, err error) {
 	ctx.JSON(http.StatusInternalServerError, errorResponse{
-		Code:    "02",
-		Message: err.Error(),
+		ErrorCode: "0002",
+		Message:   err.Error(),
 	})
 }
