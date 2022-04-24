@@ -58,7 +58,7 @@ func (uc TaskUsecase) AddTask(ctx *gin.Context) {
 		return
 	}
 
-	responseDto.SuccessWithData(ctx, taskDto)
+	responseDto.SuccessCreated(ctx, taskDto)
 }
 
 func (uc TaskUsecase) EditTask(ctx *gin.Context) {

@@ -29,3 +29,9 @@ func SuccessWithData(ctx *gin.Context, data interface{}) {
 		Result: data,
 	})
 }
+
+func SuccessCreated(ctx *gin.Context, data interface{}) {
+	ctx.JSON(http.StatusCreated, successData{
+		Result: data,
+	})
+}
