@@ -1,14 +1,31 @@
 ### API 實作
 
 ```
+default:
+    port: 8000
+    db  : in-memory
+```
+
+```
 command:
     run server
         - go run command/main.go
     run task test
         - go test -v usecase/task/*
+    run docker
+        - docker build -t gogo-task
+        - docker run -p 8000:8000 gogo-task
 ```
 
+概覽
+
 ```
+可以使用heroku串接api
+( 初次呼叫時需等待約10~20秒鐘待機器從待機轉為上線 )
+
+heroku domain:
+    https://gogo-task.herokuapp.com/
+
 1. 取得tasks
 2. 新增task
 3. 修改task
@@ -20,7 +37,7 @@ command:
 ####
 
 ```
-Spec:
+API Spec:
     {
         name: string
         status: boolean
@@ -36,7 +53,7 @@ Path: /tasks
 Method: GET
 
 Request:
-    no need any params, show all of tasks.
+    不需輸入參數，回傳全部。
 
 Response:
     {
@@ -95,7 +112,7 @@ Path: /task/id
 Method: DELETE
 
 Request:
-    no need any params
+    不需參數。
 
 Response:
 StatusCode: 200
