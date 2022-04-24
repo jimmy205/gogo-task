@@ -1,6 +1,14 @@
 ### API 實作
 
 ```
+command:
+    run server
+        - go run command/main.go
+    run task test
+        - go test -v usecase/task/*
+```
+
+```
 1. 取得tasks
 2. 新增task
 3. 修改task
